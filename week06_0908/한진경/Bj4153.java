@@ -17,7 +17,7 @@ public class Bj4153 {
       int c = Integer.parseInt(st.nextToken());
 
       if (a == 0 && b == 0 && c == 0)
-        break; // 종료 조건(0 0 0)
+        break; // 종료 조건(0 0 0)!
 
       int[] arr = { a, b, c };
       Arrays.sort(arr); // 정렬
