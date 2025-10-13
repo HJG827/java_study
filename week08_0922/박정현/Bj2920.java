@@ -7,10 +7,10 @@ public class Bj2920 {
 		// TODO Auto-generated method stub
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		String a = br.readLine();
-		if (a=="1 2 3 4 5 6 7 8") {
+		if (a.equals("1 2 3 4 5 6 7 8")) {
 			System.out.println("ascending");
 		}
-		else if (a=="8 7 6 5 4 3 2 1") {
+		else if (a.equals("8 7 6 5 4 3 2 1")) {
 			System.out.println("ascending");
 		}
 		else {
