@@ -1,34 +1,45 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
-import java.util.StringTokenizer;
 
-public class BJ_10250 {
+public class BJ_1541 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int T = Integer.parseInt(br.readLine());
+        String expression = br.readLine();
 
-        for (int i = 0; i < T; i++) {
-            StringTokenizer st = new StringTokenizer(br.readLine());
-            int H = Integer.parseInt(st.nextToken());
-            int W = Integer.parseInt(st.nextToken());
-            int N = Integer.parseInt(st.nextToken());
+        // + 또는 - 기준으로 나누되, 구분자도 포함되도록 정규식 사용
+        String[] result = expression.split("(?=[+-])|(?<=[+-])");
 
-            String h, w;
+        int res = Integer.parseInt(result[0]);
+        boolean minus = false;
+        int sum = 0;
 
-            if (N % H != 0) {
-                h = String.valueOf(N % H);
-                w = String.valueOf(N / H + 1);
+        for (int i = 1; i < result.length; i++) {
+            String token = result[i];
+            
+            if (token.equals("-")) {
+                // 마이너스 시작 시점이면 지금까지의 sum을 빼고 새 그룹 시작
+                if (minus) {
+                    res -= sum;
+                    sum = 0;
+                } else {
+                    minus = true;
+                }
+            } else if (token.equals("+")) {
+                continue;
             } else {
-                h = String.valueOf(H);
-                w = String.valueOf(N / H);
+                int num = Integer.parseInt(token);
+                if (minus) {
+                    sum += num;
+                } else {
+                    res += num;
+                }
             }
-
-            if (Integer.parseInt(w) < 10) {
-                w = "0" + w;
-            }
-
-            System.out.printf("%s%s\n", h, w);
         }
+
+        // 마지막 처리
+        if (minus) res -= sum;
+
+        System.out.println(res);
     }
 }
