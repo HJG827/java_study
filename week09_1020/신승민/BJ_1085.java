@@ -1,3 +1,5 @@
+package 신승민;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
@@ -15,10 +17,13 @@ public class BJ_1085 {
         int minX = x;
         int minY = y;
 
-        if (x > X-x) minX = X-x;
-        if (y > Y-y) minY = Y-y;
+        if (x > X - x)
+            minX = X - x;
+        if (y > Y - y)
+            minY = Y - y;
         int res = minX;
-        if (res > minY) res = minY;
+        if (res > minY)
+            res = minY;
 
         System.out.println(res);
     }
